@@ -25,7 +25,7 @@ impl ThirtySeven for Silly {
 }
 
 #[async_recursion]
-pub async fn generic_parameter<S: ThirtySeven + Send>(mut x: S) -> u64 {
+pub async fn generic_parameter<S: ThirtySeven + Send + Sync>(mut x: S) -> u64 {
     if x.descend() {
         generic_parameter(x).await
     } else {

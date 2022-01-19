@@ -165,7 +165,7 @@ fn transform_sig(sig: &mut Signature, args: &RecursionArgs) {
     };
 
     let send_bound: TokenStream = if args.send_bound {
-        quote!(+ ::core::marker::Send)
+        quote!(+ ::core::marker::Send + ::core::marker::Sync)
     } else {
         quote!()
     };
